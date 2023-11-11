@@ -26,8 +26,11 @@ img,
 picture,
 svg,
 video {
-  display: block;
   max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  font-style: italic;
+  shape-margin: 1rem;
 }
 
 @media (prefers-reduced-motion: reduce) {

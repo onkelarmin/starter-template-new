@@ -1,7 +1,7 @@
 .pile {
   display: grid;
-  grid-template-areas: "pile";
-  place-content: center;
+  grid-template-areas: 'pile';
+  place-items: center;
 
   > * {
     grid-area: pile;

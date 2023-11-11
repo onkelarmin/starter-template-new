@@ -1,4 +1,4 @@
-@use "../abstracts/" as *;
+@use '../abstracts/' as *;
 
 .container {
   --padding: #{$container-min-margin-inline} * 2;
@@ -8,12 +8,50 @@
   margin-inline: auto;
 }
 
-.container[data-type="narrow"] {
+.container[data-type='narrow'] {
   --max-width: #{$container-max-width-narrow};
 }
-.container[data-type="wide"] {
+.container[data-type='wide'] {
   --max-width: #{$container-max-width-wide};
 }
-.container[data-type="full-bleed"] {
+.container[data-type='full-bleed'] {
   --max-width: 100%;
+}
+
+// ================================================
+
+.content-grid {
+  --padding-inline: $container-min-margin-inline;
+  --content-max-width: $container-max-width;
+  --breakout-max-width: $container-max-width-wide;
+
+  --content-size: calc(100% - (var(--padding-inline) * 2));
+  --breakout-size: calc(
+    (var(--breakout-max-width) - var(--content-max-width)) / 2
+  );
+
+  display: grid;
+  grid-template-columns:
+    [full-width-start] minmax(var(--padding-inline, 1fr))
+    [breakout-start] minmax(0, var(--breakout-size))
+    [content-start] min(var(--content-size), var(--content-max-width))
+    [content-end]
+    minmax(0, var(--breakout-size)) [breakout-end]
+    minmax(var(--padding-inline, 1fr)) [full-width-end];
+}
+
+.content-grid > :not(.breakout, .full-width),
+.full-width > :not(.breakout, .full-width) {
+  grid-column: content;
+}
+
+.content-grid > .breakout {
+  grid-column: breakout;
+}
+
+.content-grid > .full-width {
+  grid-column: full-width;
+
+  display: grid;
+  grid-template-columns: inherit;
 }
