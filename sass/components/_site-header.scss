@@ -1,4 +1,4 @@
-@use "../abstracts" as *;
+@use '../abstracts' as *;
 
 .site-header {
   color: $site-header-color;
@@ -7,7 +7,7 @@
 
   &__inner {
     display: flex;
-    gap: $size-4;
+    gap: $site-header-gap;
     align-items: $site-header-alignment;
     justify-content: $site-header-jusitifcation-small-screens;
 

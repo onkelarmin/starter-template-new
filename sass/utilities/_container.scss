@@ -1,7 +1,10 @@
 @use '../abstracts/' as *;
 
 .container {
-  --padding: #{$container-min-margin-inline} * 2;
+  --padding: #{$container-min-margin-inline-small-screens} * 2;
+  @include mq(medium) {
+    --padding: #{$container-min-margin-inline-large-screens} * 2;
+  }
   --max-width: #{$container-max-width};
 
   width: min(100% - var(--padding), var(--max-width));
@@ -21,9 +24,12 @@
 // ================================================
 
 .content-grid {
-  --padding-inline: $container-min-margin-inline;
-  --content-max-width: $container-max-width;
-  --breakout-max-width: $container-max-width-wide;
+  --padding-inline: #{$container-min-margin-inline-small-screens};
+  @include mq(medium) {
+    --padding-inline: #{$container-min-margin-inline-large-screens};
+  }
+  --content-max-width: #{$container-max-width};
+  --breakout-max-width: #{$container-max-width-wide};
 
   --content-size: calc(100% - (var(--padding-inline) * 2));
   --breakout-size: calc(
@@ -32,16 +38,15 @@
 
   display: grid;
   grid-template-columns:
-    [full-width-start] minmax(var(--padding-inline, 1fr))
+    [full-width-start] minmax(var(--padding-inline), 1fr)
     [breakout-start] minmax(0, var(--breakout-size))
-    [content-start] min(var(--content-size), var(--content-max-width))
+    [content-start] min(var(#{--content-size}), var(--content-max-width))
     [content-end]
     minmax(0, var(--breakout-size)) [breakout-end]
-    minmax(var(--padding-inline, 1fr)) [full-width-end];
+    minmax(var(--padding-inline), 1fr) [full-width-end];
 }
 
-.content-grid > :not(.breakout, .full-width),
-.full-width > :not(.breakout, .full-width) {
+.content-grid > :not(.breakout, .full-width) {
   grid-column: content;
 }
 
@@ -51,7 +56,4 @@
 
 .content-grid > .full-width {
   grid-column: full-width;
-
-  display: grid;
-  grid-template-columns: inherit;
 }

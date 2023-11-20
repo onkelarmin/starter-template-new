@@ -62,11 +62,13 @@ $grid-gap: $size-6;
 $flex-group-gap: $size-4;
 
 $hero-padding-block: clamp(15rem, 15vh, 20rem);
-$section-padding-block: clamp(5rem, 10vh, 6rem);
+$section-padding-block-small-screens: $size-10;
+$section-padding-block-large-screens: $size-9;
 
-$container-min-margin-inline: $size-4;
-$container-max-width: 64rem;
-$container-max-width-narrow: 40rem;
+$container-min-margin-inline-small-screens: $size-4;
+$container-min-margin-inline-large-screens: $size-9;
+$container-max-width: 70rem;
+$container-max-width-narrow: 47rem;
 $container-max-width-wide: 75rem;
 
 // site header
@@ -77,6 +79,7 @@ $site-header-margin: 0;
 $site-header-jusitifcation-small-screens: center;
 $site-header-jusitifcation-large-screens: space-between;
 $site-header-alignment: center;
+$site-header-gap: $size-4;
 
 //navigation
 $navigation-background-color: $site-header-background-color;

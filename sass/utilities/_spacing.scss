@@ -1,7 +1,11 @@
-@use "../abstracts" as *;
+@use '../abstracts' as *;
 
 .section {
-  padding-block: $section-padding-block;
+  padding-block: $section-padding-block-small-screens;
+
+  @include mq(medium) {
+    padding-block: $section-padding-block-large-screens;
+  }
 }
 
 .mx-auto {
