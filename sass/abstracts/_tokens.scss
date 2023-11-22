@@ -151,3 +151,9 @@ $form-placeholder-font-weight: $form-input-font-weight;
 $form-placeholder-font-size: $body-font-size;
 
 $form-group-spacing: 0.5rem;
+
+// animations
+$animation-transition-default: opacity 400ms linear, transform 500ms ease-in;
+$animation-slide-in-transition: $animation-transition-default;
+$animation-slide-in-offset: $size-12;
+$animation-fade-in-transition: $animation-transition-default;
